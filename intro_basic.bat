@@ -7,17 +7,23 @@ SET message=hello world
 @REM IMPRIMINDO UMA VARIAVEL TEXTO SIMPLES NO TERMINAL
 ECHO First message...'%message%'
 
-REM VERFICA SE A PASTA 'exercise' EXISTE
+@REM VERFICA SE A PASTA 'exercise' EXISTE
 IF EXIST .\exercise (
-    @REM CRIANDO UMA PASTA
+    @REM SE EXISTIR ...REMOVE PASTA
     RMDIR /S /Q .\exercise
 )
 
-@REM CRIANDO UMA PASTA
+@REM CRIANDO UMA NOVA PASTA
 MKDIR exercise
 
-@REM ARMAZENANDO TEXTO EM UM ARQUIVO .LOG
-ECHO %message% >  .\exercise\monitor.log
+@REM CRIANDO ARQUIVO .LOG E INSERINDO TEXTO
+ECHO %message% > .\exercise\monitor.log
 
-@REM EXECUTANDO UMA REPLICADO DE ARQUIVO
+@REM EXECUTANDO UMA REPLICADO DO ARQUIVO
 TYPE .\exercise\monitor.log > .\exercise\monitor_bkp
+
+@REM REMOVENDO CONTEÚDO DO ARQUIVO 'monitor.log'
+BREAK > .\exercise\monitor.log
+
+@REM Alternativa 
+@REM type nul > .\exercise\monitor.log
